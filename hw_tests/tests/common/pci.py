@@ -24,7 +24,8 @@ def get_pci_config(self):
     self.countList = []
     self.pci_idList = []
     self.infoList = []
-    parameter = "name:pcidev,vendor_id:8086,product_id:10ed,count:5" # os.getenv('OS_PCI_DEV_LIST')
+    with open('/etc/OS_PCI_DEV_LIST', 'r') as f:
+        parameter = f.read()
     parameter = parameter.strip()
     parameter = parameter.split(';')
     for i in parameter:
@@ -373,7 +374,7 @@ def get_serial_path(xml):
 
 def get_pci_output(get_console_output, server_id, DELIMITER='PCI INFO'):
     output = get_console_output(server_id)['output']
-    print "debug: get_pci_output: " + output + "/debug get_pci_output"
+    print "debug: in get_pci_output: " + output + "/debug in get_pci_output"
     lines = output.split('\n')
     delimiter_begin = PCIINFO_DELIMITER % (DELIMITER + " BEGIN")
     delimiter_end = PCIINFO_DELIMITER % (DELIMITER + " END")
@@ -385,7 +386,7 @@ def get_pci_output(get_console_output, server_id, DELIMITER='PCI INFO'):
 
 
 def retry_get_pci_output(get_console_output, server_id,
-                         retry=3, DELIMITER='PCI INFO'):
+                         retry=5, DELIMITER='PCI INFO'):
     while retry > 0:
         out = get_pci_output(get_console_output, server_id, DELIMITER)
         if out is None:

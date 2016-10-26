@@ -46,7 +46,6 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
 
         super(ServersWithSpecificFlavorTestJSON, cls).resource_setup()
 
-    @testtools.skipIf(True, 'This test needs fixing as it requires sudo access currently.')
     @test.attr(type='gate')
     def test_assign_pci_pause_unpause_instance(self):
         pci.get_pci_config(self)

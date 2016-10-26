@@ -82,7 +82,6 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
             addresses = self.client.show_server(server_with_pci['id'])['server']
 
             print "cirros@" + addresses["addresses"]["private"][0]["addr"]
-            print password
             pci_info = pci.retry_get_pci_output(
                 self.client.get_console_output, server_with_pci["id"])
 
