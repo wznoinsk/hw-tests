@@ -75,7 +75,7 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
 
             addresses = self.client.show_server(server_with_pci['id'])['server']
 
-	    self.server_id = server_with_pci['id']
+            self.server_id = server_with_pci['id']
             print self.server_id
             pci_info = pci.retry_get_pci_output(
                 self.client.get_console_output, self.server_id)
@@ -86,7 +86,7 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
             pci_count = len(expect_pci)
             self.assertEqual(1, pci_count)
 
-	    self.servers_client.reboot_server(self.server_id, type='HARD')
+            self.servers_client.reboot_server(self.server_id, type='HARD')
             waiters.wait_for_server_status(self.client, self.server_id, 'ACTIVE')
             print self.server_id
 

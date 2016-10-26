@@ -13,13 +13,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import serial
+import testtools
+import time
+
 from hw_tests.tests.common import pci
 from tempest.api.compute import base
 from tempest import config
 from tempest import test
 from tempest.common import waiters
-import serial
-import time
 
 CONF = config.CONF
 
@@ -43,7 +45,7 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
 
         super(ServersWithSpecificFlavorTestJSON, cls).resource_setup()
 
-    #@testtools.skipIf(not run_ssh, 'Instance validation tests are disabled.')
+    @testtools.skipIf(True, 'This test needs fixing as it requires sudo access currently.')
     @test.attr(type='gate')
     def test_assign_pci_suspend_resume_instance(self):
         pci.get_pci_config(self)

@@ -92,5 +92,5 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
             pci_count = len(expect_pci)
             print "debug: pci_info - %s, expect_pci - %s, pci_count - %s" % (pci_info, expect_pci, pci_count)
 
-	    # pci_count = pci_count.strip()
-	    self.assertEqual(1, pci_count)
+            # pci_count = pci_count.strip()
+            self.assertEqual(1, pci_count)

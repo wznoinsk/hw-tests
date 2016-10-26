@@ -64,8 +64,6 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
         return current_flavor, new_flavor_ref
 
     @test.attr(type='hardware')
-    @testtools.skipUnless(CONF.validation.run_validation,
-                          'Instance validation tests are disabled.')
     def test_assign_pci_resize_revert_instance(self):
         #Get PCI related parameter and ready to test
         pci.get_pci_config(self)

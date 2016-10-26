@@ -14,7 +14,6 @@
 #    under the License.
 
 import base64
-import testtools
 
 from hw_tests.tests.common import pci
 from tempest.api.compute import base
@@ -57,8 +56,6 @@ class ServersWithSpecificFlavorTestJSON(base.BaseV2ComputeAdminTest):
         return current_flavor, new_flavor_ref
 
 
-    @testtools.skipUnless(CONF.validation.run_validation,
-                          'Instance validation tests are disabled.')
     @test.attr(type='hardware')
     def test_assign_pci_resize_instance(self):
         pci.get_pci_config(self)
